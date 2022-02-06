@@ -34,6 +34,22 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+const authenticateUser = async (req, res, next) => {
+    const accessToken = req.header('Authorization')
+
+    try {
+        const user = await User.findOne({ accessToken })
+
+        if (user) {
+            next()
+        } else {
+            res.status(401).json({ response: 'You need to be logged in to access this content.', success: false })
+        }
+    } catch (error) {
+        res.status(400).json({ response: error, success: false })
+    }
+}
+
 app.get('/', (req, res) => {
     res.send('Up and running.')
 })
@@ -78,11 +94,16 @@ app.post('/login', async (req, res) => {
                 success: true
             })
         } else {
-            res.status(404).json({ response: 'User not found', success: false })
+            res.status(404).json({ response: 'Incorrect credentials. Try again.', success: false })
         }
     } catch (error) {
         res.status(400).json({ response: error, success: false })
     }
+})
+
+app.get('/main', authenticateUser)
+app.get('/main', (req, res) => {
+    res.send('Logged in welcome screen')
 })
 
 app.listen(port, () => {
