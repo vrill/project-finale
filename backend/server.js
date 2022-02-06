@@ -31,6 +31,21 @@ const User = mongoose.model('User', UserSchema)
 const port = process.env.PORT || 8080
 const app = express()
 
+// const allowedDomains = [
+//     'https://project.netlify.com',
+//     'https://project.herokuapp.com'
+// ]
+
+// app.use(cors({
+//     origin: (origin, callback) => {
+//         if (allowedDomains.includes(origin)) {
+//             return callback(null, true)
+//         } else {
+//             return callback(new Error('Unallowed domain.'), false)
+//         }
+//     }
+// }))
+
 app.use(cors())
 app.use(express.json())
 
