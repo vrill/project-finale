@@ -1,4 +1,5 @@
 import cors from 'cors'
+import bcrypt from 'bcrypt'
 import express from 'express'
 import mongoose from 'mongoose'
 
@@ -41,9 +42,23 @@ app.post('/signup', async (req, res) => {
     const { username, password } = req.body
 
     try {
-        
-    } catch (error) {
+        const salt = bcrypt.genSaltSync()
 
+        const newUser = await new User({
+            username,
+            password: bcrypt.hashSync(password, salt)
+        }).save()
+
+        res.status(201).json({
+            response: {
+                userId: newUser._id,
+                username: newUser.username,
+                accessToken: newUser.accessToken
+            },
+            success: true
+        })
+    } catch (error) {
+        res.status(400).json({ response: error, success: false })
     }
 })
 
