@@ -62,6 +62,29 @@ app.post('/signup', async (req, res) => {
     }
 })
 
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body
+
+    try {
+        const user = await User.findOne({ username })
+
+        if (user && bcrypt.compareSync(password, user.password)) {
+            res.status(200).json({
+                response: {
+                    userId: user._id,
+                    username: user.username,
+                    accessToken: user.accessToken
+                },
+                success: true
+            })
+        } else {
+            res.status(404).json({ response: 'User not found', success: false })
+        }
+    } catch (error) {
+        res.status(400).json({ response: error, success: false })
+    }
+})
+
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)
 })
