@@ -28,6 +28,15 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema)
 
+const PlantSchema = new mongoose.Schema({
+    message: {
+        type: String,
+        required: true
+    }
+})
+
+const Plant = mongoose.model('Plant', PlantSchema)
+
 const port = process.env.PORT || 8080
 const app = express()
 
@@ -58,7 +67,7 @@ const authenticateUser = async (req, res, next) => {
         if (user) {
             next()
         } else {
-            res.status(401).json({ response: 'You need to be logged in to access this content.', success: false })
+            res.status(401).json({ response: { message: 'You need to be logged in to access this content.' }, success: false })
         }
     } catch (error) {
         res.status(400).json({ response: error, success: false })
@@ -116,9 +125,16 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.get('/main', authenticateUser)
-app.get('/main', (req, res) => {
-    res.send('Logged in welcome screen')
+// app.get('/main', authenticateUser)
+// app.get('/main', (req, res) => {
+//     res.send('Logged in welcome screen')
+// })
+
+// Section to list plants/todo
+app.get('/plants', authenticateUser)
+app.get('/plants', async (req, res) => {
+    const plants = await Plant.find({})
+    res.status(201).json({ response: plants, success: true })
 })
 
 app.listen(port, () => {
