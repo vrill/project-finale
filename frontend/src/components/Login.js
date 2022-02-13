@@ -1,8 +1,9 @@
-import React, { useState } from "react"
-import { useDispatch, batch } from "react-redux"
+import React, { useEffect, useState } from 'react'
+import { batch, useDispatch, useSelector } from 'react-redux'
+import { useNavigate, Link } from 'react-router-dom'
 
-import { API_URL } from "../utils/constants"
-import user from "../reducers/user"
+import { API_URL } from '../utils/constants'
+import user from '../reducers/user'
 
 const Login = () => {
 
@@ -10,7 +11,16 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [mode, setMode] = useState('signup')
 
+    const accessToken = useSelector((store) => store.user.accessToken)
+
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (accessToken) {
+            navigate('/')
+        }
+    }, [accessToken, navigate])
 
     const onFormSubmit = (event) => {
         event.preventDefault()
@@ -46,6 +56,9 @@ const Login = () => {
 
     return (
         <>
+            <div>
+                <Link to="/">Go to start</Link>
+            </div>
             <label htmlFor="signup">
                 Sign up
                 <input
