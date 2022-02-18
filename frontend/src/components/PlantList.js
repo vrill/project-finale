@@ -9,7 +9,7 @@ const PlantList = () => {
     const dispatch = useDispatch()
 
     const deleteAllPlants = () => {
-        dispatch(plants.actions.deleteAllPlants)
+        dispatch(plants.actions.deleteAllPlants())
     }
 
     const onTogglePlant = (id) => {
@@ -23,8 +23,8 @@ const PlantList = () => {
     return (
         <section className="plant-items">
             <div className="plant-items-header">
-                <p>Watered?</p>
-                <p>Plant to water</p>
+                <p>Watered</p>
+                <p>Plant</p>
                 <button
                     onClick={deleteAllPlants}
                     className="btn-del-all btn"
@@ -33,7 +33,7 @@ const PlantList = () => {
                     <strong>Remove all</strong>
                 </button>
             </div>
-            {items.map((item, index) => (
+            {items.map((item) => (
                 <div className="plant-item-flex" key={item.id}>
                     <label className="checkbox-container">
                         <p className="item-text">{item.text}</p>

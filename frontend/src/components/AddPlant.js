@@ -14,7 +14,7 @@ const AddPlant = () => {
 
     return (
         <>
-            <section>
+            <section className="add-plant">
                 <input
                     type="text"
                     value={input}

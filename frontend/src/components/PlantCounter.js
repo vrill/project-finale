@@ -9,14 +9,13 @@ const PlantCounter = () => {
         return (
             <section className="plant-counter pc-items">
                 <p>You're tracking {plants.length} plants.</p>
-                <p>You've currently watered {remainingPlants.length} of them.</p>
+                <p>Currently you've cared for {remainingPlants.length} of them.</p>
             </section>
         )
     } else if  (remainingPlants.length === 0) {
         return (
             <section className="plant-counter pc-empty">
-                <p>You haven't added any plants!</p>
-                <p>You can add one and when to water it.</p>
+                <p>Start by adding a plant and when to water it.</p>
             </section>
         )
     }

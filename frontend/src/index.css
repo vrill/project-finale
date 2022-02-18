@@ -5,9 +5,161 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #06D6A0;
+  margin: 0 auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  width: 100vw;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+header {
+  width: 100%;
+  background-color: #06D6A0;
+  text-align: center;
+}
+
+.btn {
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+}
+
+.btn:hover {
+  background-color: silver;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-add {
+  color: #06D6A0;
+}
+
+.btn-del {
+  color: #EF476F;
+}
+
+.add-plant,
+.plant-items,
+.plant-items-header,
+.plant-item-flex {
+  box-sizing: border-box;
+}
+
+.add-plant {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  display: flex;
+}
+
+.input-text {
+  flex-grow: 1;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  border: 1px solid #06D6A0;
+  border-radius: 0.4rem;
+}
+
+.char-count {
+  font-size: small;
+  margin-top: -0.8rem;
+  margin-right: auto;
+  margin-left: 1.5rem;
+  color: grey;
+}
+
+.plant-items {
+  width: 100%;
+  padding: 1rem;
+}
+
+.plant-items-header {
+  background-color: rgba(63, 122, 93, 0.2);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  padding-left: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plant-item-flex {
+  max-width: 100%;
+  word-break: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid silver;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.item-text {
+  margin: 0 auto;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+  border-radius: 15px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #118AB2
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 10px;
+  top: 5px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.plant-counter {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #06D6A0;
+  text-align: center;
 }

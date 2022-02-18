@@ -23,7 +23,7 @@ const plants = createSlice({
                 if (item.id === action.payload) {
                     const updatedPlant = {
                         ...item,
-                        icComplete: !item.isComplete,
+                        isComplete: !item.isComplete,
                     }
                     return updatedPlant
                 } else {
