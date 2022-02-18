@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { batch, useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { API_URL } from '../utils/constants'
 import user from '../reducers/user'
@@ -9,7 +9,7 @@ const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [mode, setMode] = useState('signup')
+    const [mode, setMode] = useState('login')
 
     const accessToken = useSelector((store) => store.user.accessToken)
 
@@ -59,48 +59,56 @@ const Login = () => {
 
     return (
         <>
-            <div>
-                <Link to="/">Go to start</Link>
-            </div>
-            <label htmlFor="signup">
-                Sign up
-                <input
-                    id="signup"
-                    type="radio"
-                    checked={mode === 'signup'}
-                    onChange={() => setMode('signup')}    
-                />
-            </label>
-            <label htmlFor="signup">
-                Log in
-                <input
-                    id="login"
-                    type="radio"
-                    checked={mode === 'login'}
-                    onChange={() => setMode('login')}
-                />
-            </label>
-            <form onSubmit={onFormSubmit}>
-                <label htmlFor="username">
-                    Username
-                    <input
-                        id="username"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
-                <label htmlFor="passwprd">
-                    Password
-                    <input
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
+            <section className="login-section">
+
+                <h1>Welcome to Planntr.</h1>
+
+                <img id="login-logo" src={process.env.PUBLIC_URL + '/logo.png'} alt="Planntr logo" />
+
+                <div className="radio-section">
+                    <label htmlFor="login">
+                        Log in
+                        <input
+                            id="login"
+                            type="radio"
+                            checked={mode === 'login'}
+                            onChange={() => setMode('login')}
+                        />
+                    </label>
+                    <label htmlFor="signup">
+                        &nbsp; Sign up
+                        <input
+                            id="signup"
+                            type="radio"
+                            checked={mode === 'signup'}
+                            onChange={() => setMode('signup')}    
+                        />
+                    </label>
+                </div>
+
+                <form onSubmit={onFormSubmit}>
+                    <div className="input-section">
+                        <label htmlFor="username">Username</label>
+                            <input
+                                className="portal-input"
+                                id="username"
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        <label htmlFor="password">Password</label>
+                            <input
+                                className="portal-input"
+                                id="password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                    </div>
+
+                    <button className="portal-btn btn" type="submit">Submit</button>
+                </form>
+            </section>
         </>
     )
 }

@@ -118,7 +118,7 @@ app.post('/login', async (req, res) => {
                 success: true
             })
         } else {
-            res.status(404).json({ response: 'Incorrect credentials. Try again.', success: false })
+            res.status(404).json({ response: 'Invalid credentials. Try again.', success: false })
         }
     } catch (error) {
         res.status(400).json({ response: error, success: false })

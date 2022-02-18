@@ -19,7 +19,7 @@ const AddPlant = () => {
                     type="text"
                     value={input}
                     onChange={(event) => setInput(event.target.value)}
-                    placeholder="Name your plant ..."
+                    placeholder="Add your plant and how to care for it <3"
                     className="input-text"
                 />
                 <button

@@ -23,8 +23,7 @@ const PlantList = () => {
     return (
         <section className="plant-items">
             <div className="plant-items-header">
-                <p>Watered</p>
-                <p>Plant</p>
+                <p>Your plants & care taking:</p>
                 <button
                     onClick={deleteAllPlants}
                     className="btn-del-all btn"

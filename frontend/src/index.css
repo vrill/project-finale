@@ -20,6 +20,43 @@ body {
   background-color: white;
 }
 
+#login-logo {
+  width: 34%;
+}
+
+.login-section,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.radio-section {
+  padding: 4rem 0 2rem 0;
+}
+
+form {
+  gap: 1rem;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.portal-input {
+  padding: 0.5rem;
+  border: 1px solid #06D6A0;
+  border-radius: 0.4rem;
+}
+
+.portal-btn {
+  background-color: #06D6A0;
+  width: 100%;
+}
+
 header {
   width: 100%;
   background-color: #06D6A0;
@@ -30,6 +67,7 @@ header {
   border: 0;
   padding: 0.5rem 1rem;
   border-radius: 0.4rem;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -82,7 +120,7 @@ header {
 .plant-items-header {
   background-color: rgba(63, 122, 93, 0.2);
   border-radius: 0.4rem;
-  padding: 0.5rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
   padding-left: 0.9rem;
   display: flex;
   align-items: center;
