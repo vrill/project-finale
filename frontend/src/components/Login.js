@@ -50,6 +50,9 @@ const Login = () => {
                         dispatch(user.actions.setAccessToken(null))
                         dispatch(user.actions.setError(data.response))
                     })
+                    return (
+                        alert(data.response)
+                    )
                 }
             })
     }
