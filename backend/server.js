@@ -28,15 +28,6 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema)
 
-// const PlantSchema = new mongoose.Schema({
-//     message: {
-//         type: String,
-//         required: true
-//     }
-// })
-
-// const Plant = mongoose.model('Plant', PlantSchema)
-
 const port = process.env.PORT || 8080
 const app = express()
 
@@ -124,18 +115,6 @@ app.post('/login', async (req, res) => {
         res.status(400).json({ response: error, success: false })
     }
 })
-
-// app.get('/main', authenticateUser)
-// app.get('/main', (req, res) => {
-//     res.send('Logged in welcome screen')
-// })
-
-// Section to list plants/todo
-// app.get('/plants', authenticateUser)
-// app.get('/plants', async (req, res) => {
-//     const plants = await Plant.find({})
-//     res.status(201).json({ response: plants, success: true })
-// })
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)
