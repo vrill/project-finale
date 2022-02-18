@@ -17,7 +17,7 @@ const AddPlant = () => {
             <section>
                 <input
                     type="text"
-                    value="{input}"
+                    value={input}
                     onChange={(event) => setInput(event.target.value)}
                     placeholder="Name your plant ..."
                     className="input-text"

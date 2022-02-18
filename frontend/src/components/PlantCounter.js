@@ -9,7 +9,7 @@ const PlantCounter = () => {
         return (
             <section className="plant-counter pc-items">
                 <p>You're tracking {plants.length} plants.</p>
-                <p>You've currently watered {remainingPlants} of them.</p>
+                <p>You've currently watered {remainingPlants.length} of them.</p>
             </section>
         )
     } else if  (remainingPlants.length === 0) {

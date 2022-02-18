@@ -5,6 +5,11 @@ import { useNavigate, Link } from 'react-router-dom'
 import plants from '../reducers/plants'
 import { API_URL } from '../utils/constants'
 
+import Header from './Header'
+import AddPlant from './AddPlant'
+import PlantCounter from './PlantCounter'
+import PlantList from './PlantList'
+
 const Main = () => {
 
     const plantsItems = useSelector((store) => store.plants.items)
@@ -41,16 +46,23 @@ const Main = () => {
     }, [accessToken])
 
     return (
-        <div>
+        <>
             <div>
-                <Link to="/login">To login portal.</Link>
+                <div>
+                    <Link to="/login">To login portal.</Link>
+                </div>
+                <h1>Only for logged in users.</h1>
+                <h2>Plants:</h2>
+                {plantsItems.map(item => (
+                    <div key={item._id}>{item.message}</div>
+                ))}
             </div>
-            <h1>Only for logged in users.</h1>
-            <h2>Plants:</h2>
-            {plantsItems.map(item => (
-                <div key={item._id}>{item.message}</div>
-            ))}
-        </div>
+            <Header />
+            <AddPlant />
+            <PlantList />
+            <PlantCounter />
+        </>
+
     )
 }
 
