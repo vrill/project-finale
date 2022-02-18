@@ -21,8 +21,8 @@ const PlantList = () => {
     }
 
     return (
-        <section className="todo-items">
-            <div className="todo-items-header">
+        <section className="plant-items">
+            <div className="plant-items-header">
                 <p>Watered?</p>
                 <p>Plant to water</p>
                 <button
@@ -34,7 +34,7 @@ const PlantList = () => {
                 </button>
             </div>
             {items.map((item, index) => (
-                <div className="todo-item-flex" key={item.id}>
+                <div className="plant-item-flex" key={item.id}>
                     <label className="checkbox-container">
                         <p className="item-text">{item.text}</p>
                         <input
