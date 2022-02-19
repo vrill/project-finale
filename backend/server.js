@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import express from 'express'
 import mongoose from 'mongoose'
 
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/authAPI'
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/planntr'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.set('useCreateIndex', true)
 mongoose.Promise = Promise
